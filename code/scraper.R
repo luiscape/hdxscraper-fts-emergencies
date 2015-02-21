@@ -88,7 +88,7 @@ ftsEmergencyTransactions <- function(id = NULL) {
     query_url = paste0(url, id[i], ".json")
     it <- fromJSON(getURL(query_url))
     if (is.data.frame(it)) {
-      write.csv(it, paste0("data/",TABLE_NAME, ".csv"), row.names=F)
+      # write.csv(it, paste0("data/",TABLE_NAME, ".csv"), row.names=F)
       writeTable(it, TABLE_NAME, "scraperwiki", overwrite=TRUE)
     }
     cat("done!\n")
@@ -102,16 +102,15 @@ runScraper <- function() {
   ftsEmergencyTransactions(fts_summary$id)
 }
 
-runScraper()
 
 # Changing the status of SW.
-# tryCatch(runScraper(),
-#          error = function(e) {
-#            cat('Error detected ... sending notification.')
-#            system('mail -s "FTS contributions scraper failed." luiscape@gmail.com')
-#            changeSwStatus(type = "error", message = "Scraper failed.")
-#            { stop("!!") }
-#          }
-# )
-# # If success:
-# changeSwStatus(type = 'ok')
+tryCatch(runScraper(),
+         error = function(e) {
+           cat('Error detected ... sending notification.')
+           system('mail -s "FTS contributions scraper failed." luiscape@gmail.com')
+           changeSwStatus(type = "error", message = "Scraper failed.")
+           { stop("!!") }
+         }
+)
+# If success:
+changeSwStatus(type = 'ok')
