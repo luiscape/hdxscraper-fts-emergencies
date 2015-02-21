@@ -1,0 +1,3 @@
+"id","amount","decision_date","year","donor","recipient","emergency_id","appeal_id","status","is_allocation","project_code","appeal_title","emergency_title"
+224843,541383,"2015-02-04T00:00:00",2015,"European Commission's Humanitarian Aid and Civil Protection Department","Belgian Red Cross",16529,0,"Commitment",0,NA,NA,"Burkina Faso 2015"
+224908,350340,"2015-02-04T00:00:00",2015,"European Commission's Humanitarian Aid and Civil Protection Department","ACF - France",16529,1075,"Commitment",0,"BFA-15/H/77218/5271","Burkina Faso 2015","Burkina Faso 2015"
